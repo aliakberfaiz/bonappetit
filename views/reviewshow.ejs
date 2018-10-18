@@ -1,0 +1,39 @@
+<% include partials/header %>
+
+<div class="row text-center padded" style="display:flex; flex-wrap: wrap;">
+<!--        <% reviews.forEach(function(review){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= review.image %>">
+                   <div class="caption">
+                       <h4><%= review.title %></h4>
+                   </div>
+                   <p>
+                       <a href="/review/<%= review._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>-->
+    <%reviews.forEach(function (review){%>
+     <div class="col-lg-3 col-md-6 col-sm-6" style="margin-left:40px;">   
+            <div  class="card" style="width: 18rem; height:27rem; margin-top: 4px;">
+                <img  src="<%=review.image%>"class="card-img-top" style="width: 18rem; height: 18rem;" alt="No image"/>
+                 <div class="card-body">
+             <h6 style="color:black;" class="card-title default-1">
+                 <%=review.title%>
+                 
+            </h6>
+              
+                    <a href="/review/<%= review._id %>"  class="btn btn-dark">
+                        View More
+                        </a>
+                </div>
+               
+               </div>
+           
+     </div>
+     <div></div>
+    <%})%>
+    </div>
+</div
+<% include partials/footer %>

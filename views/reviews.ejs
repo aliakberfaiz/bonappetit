@@ -1,0 +1,76 @@
+<% include partials/header %>
+<script type="text/javascript">
+		function myfunction(myform){
+			var stateSelected=myForm.state[myForm.state.selectedIndex].text;
+			//alert("you selected "+hello);
+			//alert("You selected"+stateSelected);
+			window.open("https://bonappetite-aliakberfaiz.c9users.io/reviews/"+stateSelected,"_self");
+		}
+	</script>
+
+<div class="row padded">
+     <div class="col-md-4"> 
+     </div>
+    <div class="col-md-4"> 
+   <div class="lead"> <h1 class="default-1 text-center">Reviews<h1>
+    </div>  
+<form name="myForm" action="/reviews/search" method="POST">
+    <div class="form-group">   
+    
+            <select name="state" onchange="myfunction(this.myForm)"  class="form-control form-control-sm" required> 
+            if(!selectedState)
+            <option value="" disabled selected>Select your state</option>
+                <% states.forEach(function(state){ %>
+                <%if(selectedState==state){%>
+                    <option value="<%= state %>" selected="selected"> <%=state %> </option>
+                 <% } else { %>
+                  <option value="<%= state %>" > <%=state %> </option>
+                 <% } %>
+                <% }); %>
+            
+        </select>
+        </div>
+        <!-- this is the cities select list-->
+        <div class="form-group">
+    <% if(cities){ %>
+            <select name="city" class="form-control form-control-sm" required>
+                <%cities.forEach(function(city){ %>
+                    <option value="<%= city.cityName %>" > <%=city.cityName %> </option>
+                <% }); %>
+        </select>
+        <% } %>
+        </div>
+        <div class="form-group">
+<!--This is the dummy cities select list -->        
+        <%if(!cities){%>
+        <select disabled  class="form-control form-control-sm">
+            <option>Select your city<option>
+        </select>
+        </div>
+        
+        
+        <%}%>
+        
+        
+    
+
+         <div class="form-group inline">
+                    <button class="btn btn-xs btn-success btn-block" type="submit">Search</button>
+                    </div>
+                    <div class="form-group inline">
+                    <a href="/reviews/new" class="btn btn-xs btn-primary"> Write a review?</a>
+                             
+                             </div>
+      </form>  
+      
+      
+      </div></div>
+<!--- this part is for the actual reviews -->
+<%if(selectedState && selectedCity){%>
+
+
+
+<%}%>      
+      
+
+<% include partials/footer %>

@@ -1,0 +1,18 @@
+ <% include partials/header %>
+<div class="row padded" align="center">
+    <div class="col-md-4"></div>
+   <div class="col-md-4"> 
+   <form class="form-signin" action="/signup" method="POST">
+      <h6  class="display-4 font-weight-normal white">Provide your details</h6>
+
+      <div class="form-item"><input type="Username" id="Username" class="form-control" placeholder="Username" name="username" required autofocus></div>
+      
+     <div class="form-item"><input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required > </div> 
+     
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+  </div>
+   <div class="col-md-4"></div>
+   </div>
+  <% include partials/footer %>

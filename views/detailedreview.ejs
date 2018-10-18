@@ -1,0 +1,72 @@
+<% include partials/header %>
+<div class="container">
+    <div class="row black">
+        <div class="col-md-3">
+           
+        </div>
+        <div class="col-md-9 white-background">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= review.image %>">
+                <div class="caption-full black">
+                    <h4 class="pull-right black">Rs.<%=" "+review.price%></h4>
+                    <h4 class="black"><a><%=review.title%></a></h4>
+                    <p class="black"><%= review.description %></p>
+                    <p class="black">Address:&#160;<%=review.address%></p>
+                    <p>
+                        <em class="black">Submitted By <%= review.author.username %></em>
+                    </p>
+                    <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/reviews/<%= review._id %>/edit">Edit</a>
+                        <form id="delete-form" action="/reviewdeleting/<%= review._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% }%>
+                </div>
+            </div>
+            <div class="well">
+                
+                <hr>
+                <%review.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= comment.author.username %></strong>
+                            
+                            <p class="black">
+                                <%= comment.text %> 
+                            </p>
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                            <form id="delete-form" action="/deletingcommentsof/<%=review._id%>/deleteComments/<%=comment._id %>?_method=DELETE" method="POST">
+                                <i class="glyphicon glyphicon-trash"><input type="submit" class="btn btn-xs btn-danger" value="Delete"> </i>
+                            </form>
+                            <hr>
+                            </div>
+                            </div>
+                        <% } %>
+                        
+                       <% }) %>
+                            
+                <div class="row">
+                    <div class="col-md-12">
+                  <form id="add-comment" action="/commentadd/<%=review._id%>" method="POST">
+                            <div class="form-group">
+                            <input type="text" name="comment[text]" placeholder="Add your comment">
+                            </div>
+                            <div class="form-group">
+                            <button class="btn btn-xs btn-primary ">Comment</button>
+                            </div>
+                        </form>
+                        </div>
+                        </div>
+                        
+                    </div>
+               
+                
+               
+                       
+                        </div>
+                            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include partials/footer %>

@@ -1,0 +1,86 @@
+ <% include partials/header %>
+<script type="text/javascript">
+		function myfunction(myform){
+			var stateSelected=myForm.(review[stateName]).[(myForm.(review[stateName]).selectedIndex)].text;
+			//alert("you selected "+hello);
+			//alert("You selected"+stateSelected);
+			window.open("https://bonappetite-aliakberfaiz.c9users.io/reviews/5b7815dd47671018a5f3b099/edit/"+stateSelected,"_self");
+		}
+	</script>
+<div class="container ">
+    <div class="row">
+     
+        <div style="width: 30%; margin: 25px auto;">
+               <h1 class="default-1 text-center">Edit your review</h1>
+            <form action="/reviewsedit/<%= review._id %>?_method=PUT" method="POST" name="myForm">
+                <div class="form-group">
+                       
+            <select name="review[stateName]" onchange="myfunction(this.myForm)" class=" form-control form-control-sm" disabled>
+                <% states.forEach(function(state){ %>
+                <%if(selectedState==state){%>
+                    <option value="<%= state %>" selected="selected"> <%=state %> </option>
+                 <% } else { %>
+                  <option value="<%= state %>" > <%=state %> </option>
+                 <% } %>
+                <% }); %>
+            
+        </select>
+        </div>
+        <!-- this is the cities select list-->
+          <div class="form-group">
+       
+    <% if(cities){ %>
+            <select name="review[cityName]" class=" form-control form-control-sm" disabled>
+                <%cities.forEach(function(city){ %>
+                       <%if(selectedCity==city.cityName){%>
+                    <option value="<%= city.cityName %>" selected="selected"> <%=city.cityName %> </option>
+                 <% } else { %>
+                  <option value="<%= city.cityName %>" > <%=city.cityName %> </option>
+                 <% } %>
+                <% }); %>
+        </select>
+        <% } %>
+        </div>
+          <div class="form-group ">
+        
+<!--This is the dummy cities select list -->        
+        <%if(!cities){%>
+        <select disabled class=" form-control form-control-sm">
+            <option>City<option>
+        </select>
+        </div>
+       
+        
+        <%}%> <div class="form-group">
+                    <input class="form-control" type="text" name="review[title]" placeholder="title" value="<%=review.title%>">
+                    </div>
+               
+                  <div class="form-group">
+                 
+                    <input class="form-control" type="url" name="review[image]"  value="<%=review.image%>">
+                </div>
+                <div class="form-group">
+                 
+                    <input class="form-control" type="number" name="review[price]" value="<%=review.price%>">
+                </div>
+                <div class="form-group">
+                 
+                    <textarea class="form-control" type="text" name="review[description]" placeholder="Description" rows="3"><%=review.description%></textarea>
+                    </div>
+                <div class="form-group">
+                 
+                    <textarea class="form-control" type="text" name="review[address]"  rows="3"><%=review.address%></textarea>
+                </textarea>
+                </div>
+                <div class="form-group">
+                 
+                    <button class="btn btn-xs btn-primary btn-block">Submit!</button>
+               
+                </div>
+            </form>
+            <a href="/reviews">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer %>

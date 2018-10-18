@@ -1,0 +1,36 @@
+<% include partials/header %>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+ <h1 class="display-1 text-center">Top Recipes to try </h1>
+ <br>
+ <br>
+ <div class="row" style="display:flex; flex-wrap:wrap;">
+    
+         
+    <%recipes.forEach(function (recipe){%>
+     <div class="col-lg-3 col-md-6 col-sm-6" style="margin-left:20px;">   
+            <div  class="card" style="width: 18rem; height:27rem; margin-top: 10px;">
+                <img  src="<%=recipe["image_url"]%>"class="card-img-top" style="width: 18rem; height: 18rem;" alt="Card image cap"/>
+                 <div class="card-body">
+             <h6 style="color:black;" class="card-title">
+                 <%=recipe["title"]%>
+            </h6>
+              
+                    <a href="<%=recipe["source_url"]%>" class="btn btn-dark">
+                        View
+                        </a>
+                </div>
+               
+               </div>
+           
+     </div>
+     <div></div>
+    <%})%>
+    
+    
+</div>
+<% include partials/footer %>

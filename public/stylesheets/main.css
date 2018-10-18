@@ -1,0 +1,36 @@
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+    backface-visibility: hidden;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color:black;
+}
+
+#delete-form {
+    display: inline;
+}
+.form-item{
+    padding:9px;
+}
+.white{
+    z-index: 1;
+    color:white;
+}
+.padded{
+    padding-top: 100px;
+}
+select {
+        width:200px;
+    }
+    .black{
+        color:black;
+    }
+.white-background{
+    background-color:LightGray  ;
+}

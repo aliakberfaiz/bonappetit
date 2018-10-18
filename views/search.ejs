@@ -1,0 +1,63 @@
+<% include partials/header %>
+
+<br>
+<br>
+<div class="container">
+<h1 class="display-1 text-center">Search</h1>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+<div class="card bg-secondary">
+  <div class="card-body">
+      
+<form action="/search" method="GET">
+      <div class="form-inline">
+   <input class="form-control" type="text" placeholder="Ingredients" name="searchKey">
+    <input type="submit" class="btn btn-dark" value="Search" style="margin-left:2px;">
+    </div>
+    
+</form>
+</div>
+    <div class="col-lg-4">
+        </div>
+</div>
+</div>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+
+<div class="row" style="display:flex; flex-wrap:wrap;">
+    
+         
+    <%recipes.forEach(function (recipe){%>
+     <div class="col-lg-3 col-md-6 col-sm-6" style="margin-left:40px;">   
+            <div  class="card" style="width: 18rem; height:27rem; margin-top: 4px;">
+                <img  src="<%=recipe["image_url"]%>"class="card-img-top" style="width: 18rem; height: 18rem;" alt="Card image cap"/>
+                 <div class="card-body">
+             <h6 style="color:black;" class="card-title default-1">
+                 <%=recipe["title"]%>
+                 
+            </h6>
+              
+                    <a href="<%=recipe["source_url"]%>" class="btn btn-dark">
+                        View
+                        </a>
+                </div>
+               
+               </div>
+           
+     </div>
+     <div></div>
+    <%})%>
+    <br>
+    <br>
+    <br>
+    <br><br>
+    <br>
+    <br>
+    <p>...</p>
+<% include partials/footer %>
