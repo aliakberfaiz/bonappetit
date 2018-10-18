@@ -22,9 +22,9 @@ var express     =   require("express"),
 
         
 app.use(bodyParser.urlencoded({extended: true}));
-
-mongoose.connect("mongodb://localhost:27017/bonapp_db",{useNewUrlParser: true });
-//  "mongodb://aliakberfaiz:helloworld1@ds131983.mlab.com:31983/bonappetit
+//mongoose.connect("mongodb://localhost:27017/bonapp_db",{useNewUrlParser: true });
+mongoose.connect("mongodb://aliakberfaiz:helloworld1@ds131983.mlab.com:31983/bonappetit",{useNewUrlParser: true });
+//  "
 app.set("view engine","ejs");
 app.use(express.static(__dirname + '/public/'));
  app.use(methodOverride("_method"));
