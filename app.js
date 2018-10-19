@@ -180,7 +180,7 @@ app.get("/reviews",function(req,res){
        if(err){
            console.log(err);
        } else {
-          // console.log(states);
+           console.log(states);
           statesGlobal=states;
            //var cities=[{name: 'Raipur'},{name:'Amalner'}];
           res.render("reviews",{states:states,cities:false,selectedState:false,selectedCity:false});
