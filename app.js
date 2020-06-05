@@ -159,7 +159,7 @@ app.get("/recipes",function(req,res){
 });
 app.get("/search",function(req,res){
      var search=req.query.searchKey;
-    var url="http://food2fork.com/api/search?key=7f7e05562f8d994918ee30c9d779149d&q="+search;
+    var url="http://recipesapi.herokuapp.com/api/search?key=7f7e05562f8d994918ee30c9d779149d"+search;
     request(url, function(error,response,body){
         if(!error && response.statusCode==200){
             var parsedData=JSON.parse(decode(body));
